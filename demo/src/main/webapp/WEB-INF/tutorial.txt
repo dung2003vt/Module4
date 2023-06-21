@@ -1,0 +1,17 @@
+applicationContext: là 1 file .xml, cho phép sử dụng các thành phần của thư viện SpringWebMVC
+Đồng thời đánh dấu đây là 1 dự án web SpringMVC
+
+- Lưu ý: cả 2 file .xml đều phải để đúng tên
+
+dispatcher-servlet: thêm các thư viện thuộc SpringWebMVC vào dự án để sử dụng
+Đồng thời quy định 1 số config (cài đặt) của dự án. Bao gồm:
+- package base: dùng để quét các Bean nằm trong nhóm package để khởi tạo Bean
+- khai báo đường dẫn của View, để sử dụng ViewResolver hiệu quả
+
+ViewResolver: coi là 1 nhà máy sản xuất view, dựa vào viewname được gửi xuống từ Controller,
+nó sẽ trả về view tương ứng và yêu cầu
+Cộng nghẹ hỗ trợ: Thymeleaf cho md4 => InternalViewResolver -> ThymeleafViewResolver (bài 3)
+
+Model: là 1 lớp được gắn kèm trong controller, hỗ trợ việc gửi và nhận giá trị từ controller sang view và ngược lại
+ModelMap: gần giống model
+ModelAndView: kết hợp giữ giá trị và view để tạo nên 1 view hoàn chỉnh

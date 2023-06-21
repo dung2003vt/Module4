@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<a href="/create-student">Create new student</a>
+<a href="/classes">Home classes</a>
+<form th:action="@{/search}" method="post">
+    <input type="text" name="name">
+    <button type="submit">Search</button>
+</form>
+<a href="/sort-by-point">Sort by point</a>
+<a href="/sort-by-age">Sort by age</a>
+<table border="1">
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Point</th>
+        <th>Classes</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="student : ${students}">
+        <tr>
+            <td th:text="${student.id}"></td>
+            <td th:text="${student.name}"></td>
+            <td th:text="${student.age}"></td>
+            <td th:text="${student.point}"></td>
+            <td th:if="${student.classes}" th:text="${student.classes.name}"></td>
+            <td th:unless="${student.classes}"></td>
+            <td><a th:href="@{/edit-student/__${student.id}__}">Edit</a></td>
+            <td><a th:href="@{/delete-student/__${student.id}__}" methods="post">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>
